@@ -10,13 +10,13 @@ import (
 
 const (
 	_ int = iota
-	LOWEST 
-	EQUALS // ==
+	LOWEST
+	EQUALS      // ==
 	LESSGREATER // >, <
-	SUM // +
-	PRODUCT // *
-	PREFIX // -X, !X
-	CALL // myFunction(X)
+	SUM         // +
+	PRODUCT     // *
+	PREFIX      // -X, !X
+	CALL        // myFunction(X)
 )
 
 type (
@@ -41,8 +41,8 @@ func New(l *lexer.Lexer) *Parser {
 		errors: []string{},
 	}
 
-p.prefixParseFns = make(map[token.TokenType]prefixParseFn)
-p.registerPrefix(token.IDENT, p.parseIdentifier)
+	p.prefixParseFns = make(map[token.TokenType]prefixParseFn)
+	p.registerPrefix(token.IDENT, p.parseIdentifier)
 
 	p.nextToken()
 	p.nextToken()
@@ -85,7 +85,7 @@ func (p *Parser) parseStatement() ast.Statement {
 	case token.RETURN:
 		return p.parseReturnStatement()
 	default:
-		return p.ParseExpressionStatement()
+		return p.parseExpressionStatement()
 	}
 }
 
@@ -157,7 +157,7 @@ func (p *Parser) parseExpression(precedence int) ast.Expression {
 	return leftExp
 }
 
-func (p *Parser) ParseExpressionStatement() *ast.ExpressionStatement {
+func (p *Parser) parseExpressionStatement() *ast.ExpressionStatement {
 	stmt := &ast.ExpressionStatement{Token: p.curToken}
 
 	stmt.Expression = p.parseExpression(LOWEST)
