@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"strings"
 
-	"github.com/sinagaki58/monkey-interpreter/monkey/token"
+	"github.com/sinagaki58/monkey-interpreter/token"
 )
 
 // Node is interface

@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/sinagaki58/monkey-interpreter/monkey/ast"
+	"github.com/sinagaki58/monkey-interpreter/ast"
 )
 
 const (
